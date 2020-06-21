@@ -4,10 +4,12 @@ Klasa praocwnika, który może posiadać wynagrodzenie, impelmentuje interfejs M
 
 public class Employee implements Measurable {
 
+    private String name;
     private double salary;
 
     // konstruktor tworzący nowego pracownika z przypisanym do niego wynagrodzeniem
-    public Employee(double employeeSalary){
+    public Employee(String employeeName, double employeeSalary){
+        name = employeeName;
         salary = employeeSalary;
     }
 
@@ -23,9 +25,29 @@ public class Employee implements Measurable {
         return sum/objects.length;
     }
 
+    // metoda zwracająca najwyższe wynagrodzenie z przesłanych do tablicy
+    static Measurable largest (Measurable[] objects) {
+        if (objects.length ==0) {
+            return null;
+        }
+        Measurable max = objects[0];
+        for (Measurable next : objects) {
+            if (next.isGreaterThan(max)) {
+                max = next;
+            }
+        }
+        return max;
+    }
+
     // metoda implememntuje abstrakcyjną metodę interfejsu Measurable [wymagane!] i zwraca bieżące wynagrodzenie
     @Override
     public double getMeasure() {
         return salary;
+    }
+
+    // metoda implememntuje abstrakcyjną metodę interfejsu Measurable [wymagane!] i zwraca imię pracownika
+    @Override
+    public String getName() {
+        return name;
     }
 }

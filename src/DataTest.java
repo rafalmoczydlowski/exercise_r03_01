@@ -4,9 +4,9 @@ Klasa testująca metody getAverage i metodę getSalary z klasy Employee
 public class DataTest {
     public static void main(String [] args) {
         Measurable [] objects = {
-                new Employee(10.00),
-                new Employee(20.00),
-                new Employee(30.00),
+                new Employee("Steve", 70.00),
+                new Employee("Pablo", 20.00),
+                new Employee("Vaclik", 30.00),
         };
         Data data = new Data(objects);
         System.out.println("Number of employees: " + objects.length);
@@ -14,5 +14,6 @@ public class DataTest {
             System.out.println(i+1 + " employee salary: " +objects[i].getSalary());
         }
         System.out.println("Average salary of employees: " + data.getAverage());
+        System.out.println("Employee with the highest salary is " + data.largest().getName());
     }
 }

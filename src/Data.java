@@ -1,5 +1,5 @@
 /*/
-Klasa obliczająca średnią przesłanych wynagrodzeń
+Klasa obliczająca średnią przesłanych wynagrodzeń oraz największe wynagrodzenie z przesłanych
  */
 
 public class Data {
@@ -12,5 +12,9 @@ public class Data {
 
     public double getAverage() {
         return Employee.getAverage(list);
+    }
+
+    public Measurable largest() {
+        return Employee.largest(list);
     }
 }
