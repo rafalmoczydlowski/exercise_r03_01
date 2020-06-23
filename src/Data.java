@@ -1,5 +1,5 @@
 /*/
-Klasa obliczająca średnią przesłanych wynagrodzeń oraz największe wynagrodzenie z przesłanych
+Klasa obliczająca średnią przesłanych wynagrodzeń, największe wynagrodzenie z przesłanych oraz układa obiekty rosnąco i malejąco według zarobków
  */
 
 public class Data {
@@ -17,4 +17,8 @@ public class Data {
     public Measurable largest() {
         return Employee.largest(list);
     }
+
+    public String sortingAscending() {return Employee.sortingAscending(list); }
+
+    public String sortingDescending() {return Employee.sortingDescending(list); }
 }

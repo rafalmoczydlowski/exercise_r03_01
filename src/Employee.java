@@ -2,6 +2,11 @@
 Klasa praocwnika, który może posiadać wynagrodzenie, impelmentuje interfejs Measurable
  */
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Employee implements Measurable {
 
     private String name;
@@ -39,6 +44,22 @@ public class Employee implements Measurable {
         return max;
     }
 
+    // metoda zwracająca w formie Stringa obiekty posegregowane rosnąco według wynagrodzenia; jeśli wynagrodzenie jest takie samo drugim parametrem porównywanym jest imię
+    @NotNull
+    static String sortingAscending (Measurable[] objects) {
+        Arrays.sort(objects, Comparator.comparing(Measurable::getSalary).thenComparing(Measurable::getName));
+        System.out.println("// Sorted ascending by salary:");
+        return (Arrays.toString(objects).replace(",", "\n"));
+    }
+
+    // metoda zwracająca w formie Stringa obiekty posegregowane malejąco według wynagrodzenia; jeśli wynagrodzenie jest takie samo drugim parametrem porównywanym jest imię
+    @NotNull
+    static String sortingDescending (Measurable[] objects) {
+        Arrays.sort(objects, Comparator.comparing(Measurable::getSalary).thenComparing(Measurable::getName).reversed());
+        System.out.println("// Sorted descending by salary:");
+        return (Arrays.toString(objects).replace(",", "\n"));
+    }
+
     // metoda implememntuje abstrakcyjną metodę interfejsu Measurable [wymagane!] i zwraca bieżące wynagrodzenie
     @Override
     public double getMeasure() {
@@ -49,5 +70,10 @@ public class Employee implements Measurable {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee salary = " + salary + " name = " + name;
     }
 }
